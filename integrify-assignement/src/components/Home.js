@@ -4,6 +4,7 @@ import CountryRow from './CountryRow';
 
 const Home = () => {
     const [countries, setCountries] = useState([]);
+    const [input, setInput] = useState('');
     useEffect(() => {
         axios
             .get('https://restcountries.com/v3.1/all')
@@ -13,8 +14,31 @@ const Home = () => {
             })
             .catch((error) => console.log(error));
     }, []);
+    const handleCountriesShow = (event) => {
+        setInput(event.target.value);
+        console.log(event.target.value);
+    };
+    const countriesToshow =
+        input === ''
+            ? countries
+            : countries.filter((country) => {
+                  return (
+                      country.name.common
+                          .toLowerCase()
+                          .includes(input.toLowerCase()) === true
+                  );
+              });
     return (
         <div>
+            <>
+                Search by country name{' '}
+                <input
+                    type="text"
+                    value={input}
+                    onChange={handleCountriesShow}
+                    placeholder="Search by country name"
+                />{' '}
+            </>
             <table className="table table-hover mt-3">
                 <thead>
                     <tr>
@@ -26,7 +50,7 @@ const Home = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {countries.map((country) => (
+                    {countriesToshow.map((country) => (
                         <CountryRow
                             country={country}
                             key={country.name.common}
