@@ -5,7 +5,7 @@ import axios from 'axios';
 const CountryDetail = () => {
     const { name } = useParams();
 
-    console.log('this name: ', name);
+    // console.log('this name: ', name);
 
     const useCountry = (name) => {
         const [country, setCountry] = useState(null);
@@ -13,9 +13,7 @@ const CountryDetail = () => {
         useEffect(() => {
             if (name !== '') {
                 axios
-                    .get(
-                        `https://restcountries.com/v3.1/name/${name}?fullText=true`
-                    )
+                    .get(`https://restcountries.com/v3.1/name/${name}`)
                     .then((response) => {
                         console.log('promise fulfilled');
                         setCountry(response.data);
@@ -23,7 +21,7 @@ const CountryDetail = () => {
                     .catch((error) => console.log(error));
             }
         }, [name]);
-        console.log(country);
+        // console.log(country);
         return country;
     };
     const country = useCountry(name);
