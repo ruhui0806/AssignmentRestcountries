@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 
 const CountryRow = ({ country }) => {
     const languages = country.languages;
-    console.log(languages);
+    // console.log(languages);
     const entries = languages
         ? Object.keys(languages).map((key) => languages[key])
         : [];
-    console.log('entries:', entries);
+    // console.log('entries:', entries);
     return (
         <tr>
             <td>
                 <img
                     src={country.flags.png}
-                    alt="Flag of the current country"
+                    alt={`the flag of the country ${country.name.common}`}
                 />
             </td>
             <td>{country.name.common}</td>
@@ -21,19 +21,15 @@ const CountryRow = ({ country }) => {
             <td>{country.population}</td>
             <td>
                 <ul>
-                    {entries.map((entry) => (
-                        <li key={entry}>{entry}</li>
+                    {entries.map((entry, index) => (
+                        <li key={index}>{entry}</li>
                     ))}
                 </ul>
             </td>
             <td>
-                >
-                <button
-                    to={`/countries/${country.name.common}`}
-                    className="page-link "
-                >
-                    link to country Detail
-                </button>
+                <Link to={`/${country.name.common}`} className="page-link">
+                    >
+                </Link>
             </td>
         </tr>
     );

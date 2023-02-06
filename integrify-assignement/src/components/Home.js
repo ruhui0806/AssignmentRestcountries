@@ -27,7 +27,10 @@ const Home = () => {
                 </thead>
                 <tbody>
                     {countries.map((country) => (
-                        <CountryRow country={country} />
+                        <CountryRow
+                            country={country}
+                            key={country.name.common}
+                        />
                     ))}
                 </tbody>
             </table>
