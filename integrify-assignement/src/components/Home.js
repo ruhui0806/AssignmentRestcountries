@@ -21,10 +21,14 @@ const Home = () => {
         setInput(event.target.value);
         console.log(event.target.value);
     };
+
+    let sortedCountries = [...countries].sort((a, b) =>
+        a.name.common.localeCompare(b.name.common)
+    );
     const countriesToshow =
         input === ''
-            ? countries
-            : countries.filter((country) => {
+            ? sortedCountries
+            : sortedCountries.filter((country) => {
                   return (
                       country.name.common
                           .toLowerCase()
