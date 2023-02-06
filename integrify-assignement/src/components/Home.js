@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CountryRow from './CountryRow';
 import Pagination from './Pagination';
+import SearchIcon from '@mui/icons-material/Search';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const Home = () => {
     const [countries, setCountries] = useState([]);
@@ -47,12 +50,20 @@ const Home = () => {
     return (
         <div>
             <>
-                Search by country name{' '}
-                <input
+                Search by country name
+                <i> </i>
+                <OutlinedInput
+                    sx={{ ml: 1, flex: 1 }}
+                    size="small"
                     type="text"
                     value={input}
                     onChange={handleCountriesShow}
-                    placeholder="Search by country name"
+                    placeholder="Search by name"
+                    startAdornment={
+                        <InputAdornment position="start">
+                            <SearchIcon />
+                        </InputAdornment>
+                    }
                 />{' '}
             </>
 

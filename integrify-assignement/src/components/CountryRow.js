@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 const CountryRow = ({ country }) => {
     const languages = country.languages;
-    // console.log(languages);
+
     const entries = languages
         ? Object.keys(languages).map((key) => languages[key])
         : [];
-    // console.log('entries:', entries);
+
     return (
         <tr>
             <td>
@@ -29,7 +30,10 @@ const CountryRow = ({ country }) => {
             </td>
             <td>
                 <Link to={`/${country.name.common}`} className="page-link">
-                    >
+                    <i>
+                        {' '}
+                        <KeyboardArrowRightIcon />
+                    </i>
                 </Link>
             </td>
         </tr>

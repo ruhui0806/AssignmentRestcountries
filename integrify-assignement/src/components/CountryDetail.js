@@ -5,8 +5,6 @@ import axios from 'axios';
 const CountryDetail = () => {
     const { name } = useParams();
 
-    // console.log('this name: ', name);
-
     const useCountry = (name) => {
         const [country, setCountry] = useState(null);
 
@@ -21,7 +19,7 @@ const CountryDetail = () => {
                     .catch((error) => console.log(error));
             }
         }, [name]);
-        // console.log(country);
+
         return country;
     };
     const country = useCountry(name);
