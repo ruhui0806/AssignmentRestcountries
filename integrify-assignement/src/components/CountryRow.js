@@ -28,12 +28,12 @@ const CountryRow = ({ country }) => {
             </td>
             <td>
                 >
-                {/* <Link
+                <button
                     to={`/countries/${country.name.common}`}
                     className="page-link "
                 >
-                    ">"
-                </Link> */}
+                    link to country Detail
+                </button>
             </td>
         </tr>
     );
