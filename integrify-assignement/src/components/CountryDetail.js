@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const CountryDetail = () => {
     const { name } = useParams();
@@ -30,7 +31,7 @@ const CountryDetail = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>{country[0].name.common}</h1>
             <h4>{country[0].capital}</h4>
             <img
@@ -49,6 +50,9 @@ const CountryDetail = () => {
                 <span style={fontStyle}>{country[0].population}</span> and it
                 has gained the independent, according to the CIA World Factbook.
             </p>
+            <Link to="/">
+                <ArrowBackIosIcon />{' '}
+            </Link>
         </div>
     );
 };

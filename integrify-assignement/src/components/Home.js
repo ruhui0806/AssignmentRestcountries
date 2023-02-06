@@ -5,6 +5,7 @@ import Pagination from './Pagination';
 import SearchIcon from '@mui/icons-material/Search';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 const Home = () => {
     const [countries, setCountries] = useState([]);
@@ -50,24 +51,31 @@ const Home = () => {
     return (
         <div>
             <>
-                Search by country name
-                <i> </i>
-                <OutlinedInput
-                    sx={{ ml: 1, flex: 1 }}
-                    size="small"
-                    type="text"
-                    value={input}
-                    onChange={handleCountriesShow}
-                    placeholder="Search by name"
-                    startAdornment={
-                        <InputAdornment position="start">
-                            <SearchIcon />
-                        </InputAdornment>
-                    }
-                />{' '}
+                {' '}
+                <nav className=" navbar navbar-dark bg-primary mb-4 px-3">
+                    <div className="container-fluid">
+                        <a href="/" className="navbar-brand d-inline">
+                            <FormatListBulletedIcon sx={{ m: 1 }} /> Country
+                        </a>
+                        <OutlinedInput
+                            color="primary"
+                            sx={{ ml: 1 }}
+                            size="small"
+                            type="text"
+                            value={input}
+                            onChange={handleCountriesShow}
+                            placeholder="Search by name"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                    <SearchIcon />
+                                </InputAdornment>
+                            }
+                        />
+                    </div>
+                </nav>
             </>
 
-            <table className="table table-hover mt-3">
+            <table className="table table-hover mx-2 my-4">
                 <thead>
                     <tr>
                         <th>Flag</th>
@@ -93,6 +101,7 @@ const Home = () => {
                 </tbody>
             </table>
             <Pagination
+                className="mx-2"
                 count={Number(countries.length)}
                 component="div"
                 rowsPerPage={rowsPerPage}
