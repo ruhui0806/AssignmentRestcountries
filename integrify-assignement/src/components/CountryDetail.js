@@ -33,7 +33,6 @@ const CountryDetail = () => {
 
     return (
         <div>
-            <h1>This is the single country detail page</h1>
             <h1>{country[0].name.common}</h1>
             <h4>{country[0].capital}</h4>
             <img

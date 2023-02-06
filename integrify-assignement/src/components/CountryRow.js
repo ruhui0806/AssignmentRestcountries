@@ -14,6 +14,7 @@ const CountryRow = ({ country }) => {
                 <img
                     src={country.flags.png}
                     alt={`the flag of the country ${country.name.common}`}
+                    height={'70'}
                 />
             </td>
             <td>{country.name.common}</td>
