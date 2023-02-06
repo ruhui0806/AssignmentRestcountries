@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-
+import Home from './components/Home';
+import CountryRow from './components/CountryRow';
 function App() {
     const [countries, setCountries] = useState([]);
     useEffect(() => {
@@ -15,11 +17,12 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
-                {countries.map((country) => (
-                    <div>{country.name.common}</div>
-                ))}
-            </header>
+            {/* <Router> */}
+            <Home countries={countries} />
+            {/* <Routes>
+                    <Route path="/countries/:name" element={CountryRow} />
+                </Routes> */}
+            {/* </Router> */}
         </div>
     );
 }
