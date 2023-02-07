@@ -36,7 +36,7 @@ const CountryDetail = () => {
             <h4>{country[0].capital}</h4>
             <img
                 src={country[0].flags.svg}
-                height="100"
+                height="500"
                 alt={`flag of ${country[0].name.common}`}
             />
             <p>

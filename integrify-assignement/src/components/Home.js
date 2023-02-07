@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Home = () => {
     const [countries, setCountries] = useState([]);
@@ -26,6 +27,13 @@ const Home = () => {
         console.log(event.target.value);
     };
 
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: '#FFFFFF',
+            },
+        },
+    });
     let sortedCountries = [...countries].sort((a, b) =>
         a.name.common.localeCompare(b.name.common)
     );
@@ -52,25 +60,34 @@ const Home = () => {
         <div>
             <>
                 {' '}
-                <nav className=" navbar navbar-dark bg-primary mb-4 px-3">
+                <nav className=" navbar navbar-dark bg-primary">
                     <div className="container-fluid">
                         <a href="/" className="navbar-brand d-inline">
-                            <FormatListBulletedIcon sx={{ m: 1 }} /> Country
+                            <FormatListBulletedIcon
+                                sx={{ m: 1 }}
+                                align="justify"
+                            />
+                            country
                         </a>
-                        <OutlinedInput
-                            color="primary"
-                            sx={{ ml: 1 }}
-                            size="small"
-                            type="text"
-                            value={input}
-                            onChange={handleCountriesShow}
-                            placeholder="Search by name"
-                            startAdornment={
-                                <InputAdornment position="start">
-                                    <SearchIcon />
-                                </InputAdornment>
-                            }
-                        />
+                        <ThemeProvider theme={theme}>
+                            <OutlinedInput
+                                color="primary"
+                                sx={{ ml: 1 }}
+                                size="small"
+                                type="text"
+                                value={input}
+                                onChange={handleCountriesShow}
+                                placeholder="Search by name"
+                                startAdornment={
+                                    <InputAdornment
+                                        position="start"
+                                        color="primary"
+                                    >
+                                        <SearchIcon color="primary" />
+                                    </InputAdornment>
+                                }
+                            />
+                        </ThemeProvider>
                     </div>
                 </nav>
             </>
@@ -100,15 +117,16 @@ const Home = () => {
                         ))}
                 </tbody>
             </table>
-            <Pagination
-                className="mx-2"
-                count={Number(countries.length)}
-                component="div"
-                rowsPerPage={rowsPerPage}
-                page={page}
-                handleChangePage={handleChangePage}
-                handleChangeRowsPerPage={handleChangeRowsPerPage}
-            />
+            <div className="wrapper">
+                <Pagination
+                    count={Number(countries.length)}
+                    component="div"
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    handleChangePage={handleChangePage}
+                    handleChangeRowsPerPage={handleChangeRowsPerPage}
+                />
+            </div>
         </div>
     );
 };

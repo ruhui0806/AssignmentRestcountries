@@ -14,9 +14,23 @@ code {
 td {
     vertical-align: middle;
 }
+tr {
+    width: 100%;
+    height: 90px;
+}
 header {
     display: inline-block;
 }
 a {
+    justify-content: center;
     text-align: center;
+    vertical-align: middle;
+}
+.wrapper {
+    background: rgb(246, 242, 242);
+    padding-bottom: 5px;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
 }
