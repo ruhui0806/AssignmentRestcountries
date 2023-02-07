@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+import restCountriesService from '../services/restCountriesService.js';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const CountryDetail = () => {
@@ -11,11 +11,11 @@ const CountryDetail = () => {
 
         useEffect(() => {
             if (name !== '') {
-                axios
-                    .get(`https://restcountries.com/v3.1/name/${name}`)
-                    .then((response) => {
-                        console.log('promise fulfilled');
-                        setCountry(response.data);
+                restCountriesService
+                    .searchByName(name)
+                    .then((country) => {
+                        console.log('promise search country by name fulfilled');
+                        setCountry(country);
                     })
                     .catch((error) => console.log(error));
             }

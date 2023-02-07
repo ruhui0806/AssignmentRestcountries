@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import CountryRow from './CountryRow';
 import Pagination from './Pagination';
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,20 +6,17 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import restCountriesService from '../services/restCountriesService.js';
 const Home = () => {
     const [countries, setCountries] = useState([]);
     const [input, setInput] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
+
     useEffect(() => {
-        axios
-            .get('https://restcountries.com/v3.1/all')
-            .then((response) => {
-                console.log('promise fulfilled');
-                setCountries(response.data);
-            })
-            .catch((error) => console.log(error));
+        restCountriesService
+            .getAll()
+            .then((countries) => setCountries(countries));
     }, []);
     const handleCountriesShow = (event) => {
         setInput(event.target.value);
