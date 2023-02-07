@@ -25,7 +25,7 @@ describe('pages can be opened', () => {
             'The country belongs to Asia and Southern Asia sub-region. Located at the 33 °N and 65 °W, this country has population of 40218234 and it has gained the independent, according to the CIA World Factbook'
         );
     });
-    it.only('it allows you to search by country name', () => {
+    it('it allows you to search by country name', () => {
         cy.get('#input-adornment').click().type('Finland');
         cy.contains('Finnish');
         cy.contains('Swedish');
