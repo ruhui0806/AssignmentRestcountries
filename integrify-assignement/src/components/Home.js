@@ -58,7 +58,7 @@ const Home = () => {
 
     return (
         <div>
-            <>
+            <div>
                 {' '}
                 <nav className=" navbar navbar-dark bg-primary">
                     <div className="container-fluid">
@@ -71,6 +71,7 @@ const Home = () => {
                         </a>
                         <ThemeProvider theme={theme}>
                             <OutlinedInput
+                                id="input-adornment"
                                 color="primary"
                                 sx={{ ml: 1 }}
                                 size="small"
@@ -90,7 +91,7 @@ const Home = () => {
                         </ThemeProvider>
                     </div>
                 </nav>
-            </>
+            </div>
 
             <table className="table table-hover mx-2 my-4">
                 <thead>

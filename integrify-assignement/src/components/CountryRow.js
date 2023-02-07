@@ -5,7 +5,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 const CountryRow = ({ country }) => {
     const languages = country.languages;
 
-    const entries = languages
+    const languageList = languages
         ? Object.keys(languages).map((key) => languages[key])
         : [];
 
@@ -24,8 +24,8 @@ const CountryRow = ({ country }) => {
             <td>{country.population}</td>
             <td>
                 <ul>
-                    {entries.map((entry, index) => (
-                        <li key={index}>{entry}</li>
+                    {languageList.map((item, index) => (
+                        <li key={index}>{item}</li>
                     ))}
                 </ul>
             </td>
@@ -33,7 +33,7 @@ const CountryRow = ({ country }) => {
                 <Link to={`/${country.name.common}`} className="page-link">
                     <i>
                         {' '}
-                        <KeyboardArrowRightIcon />
+                        <KeyboardArrowRightIcon className="arrowBtn" />
                     </i>
                 </Link>
             </td>
