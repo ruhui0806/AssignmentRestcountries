@@ -34,6 +34,6 @@ The application is deployed to Netlify: https://restcountries-application.netlif
 
         npm run cypress:open
 
-2.  a window will be opened, where you can select E2E Testing (Configured) and
+2.  a window will be opened, where you can select E2E Testing (Configured)
 3.  start the test by clicking the button"Start E2E Testing in Chrome"
 4.  click the test file "restcountreis.cy.js" to start running the test
