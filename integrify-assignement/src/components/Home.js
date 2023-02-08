@@ -8,18 +8,19 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import restCountriesService from '../services/restCountriesService.js';
 import { useDispatch, useSelector } from 'react-redux';
+import { AllCountries } from '../reducers/countryReducer';
 const Home = () => {
     // const [countries, setCountries] = useState([]);
     const [input, setInput] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
-    // useEffect(() => {
-    //     restCountriesService
-    //         .getAll()
-    //         .then((countries) => setCountries(countries));
-    // }, []);
     const dispatch = useDispatch();
+    useEffect(() => {
+        restCountriesService
+            .getAll()
+            .then((countries) => dispatch(AllCountries(countries)));
+    }, []);
     const countries = useSelector((state) => state);
 
     const handleCountriesShow = (event) => {
