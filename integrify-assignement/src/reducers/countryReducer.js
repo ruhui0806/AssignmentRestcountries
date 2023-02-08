@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import restCountriesService from '../services/restCountriesService.js';
-
 const countryReducer = (state = [], action) => {
     switch (action.type) {
         case 'ALL_COUNTRIES':
             return action.payload;
-        case 'SEARCH_COUNTRY_BY_NAME':
+        case 'GET_A_COUNTRY':
             return state;
         default:
             return state;
@@ -18,6 +15,12 @@ export const AllCountries = (data) => {
     };
 };
 
+export const GetCountry = (data) => {
+    return {
+        type: 'GET_A_COUNTRY',
+        payload: data,
+    };
+};
 export default countryReducer;
 
 // const initialState = [

@@ -2,25 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import restCountriesService from '../services/restCountriesService.js';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { GetCountry } from '../reducers/countryReducer.js';
 const CountryDetail = () => {
     const { name } = useParams();
 
-    const useCountry = (name) => {
-        const [country, setCountry] = useState(null);
+    const dispatch = useDispatch();
 
+    const useCountry = (name) => {
         useEffect(() => {
             if (name !== '') {
                 restCountriesService
                     .searchByName(name)
                     .then((country) => {
                         console.log('promise search country by name fulfilled');
-                        setCountry(country);
+                        dispatch(GetCountry(country));
                     })
                     .catch((error) => console.log(error));
             }
         }, [name]);
-
+        const country = useSelector((state) => state);
         return country;
     };
     const country = useCountry(name);
