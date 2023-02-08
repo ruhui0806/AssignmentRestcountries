@@ -7,17 +7,21 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import restCountriesService from '../services/restCountriesService.js';
+import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
-    const [countries, setCountries] = useState([]);
+    // const [countries, setCountries] = useState([]);
     const [input, setInput] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
-    useEffect(() => {
-        restCountriesService
-            .getAll()
-            .then((countries) => setCountries(countries));
-    }, []);
+    // useEffect(() => {
+    //     restCountriesService
+    //         .getAll()
+    //         .then((countries) => setCountries(countries));
+    // }, []);
+    const dispatch = useDispatch();
+    const countries = useSelector((state) => state);
+
     const handleCountriesShow = (event) => {
         setInput(event.target.value);
         console.log(event.target.value);
