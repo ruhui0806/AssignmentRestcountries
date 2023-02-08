@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import restCountriesService from '../services/restCountriesService.js';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
