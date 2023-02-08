@@ -22,3 +22,8 @@ export const GetCountry = (data) => {
     };
 };
 export default countryReducer;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/origin/b7-redux
