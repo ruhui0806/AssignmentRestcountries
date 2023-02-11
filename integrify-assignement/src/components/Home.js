@@ -11,7 +11,7 @@ const Home = () => {
     const [countries, setCountries] = useState([]);
     const [input, setInput] = useState('');
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     useEffect(() => {
         restCountriesService
@@ -30,19 +30,20 @@ const Home = () => {
             },
         },
     });
-    let sortedCountries = [...countries].sort((a, b) =>
-        a.name.common.localeCompare(b.name.common)
-    );
+
     const countriesToshow =
         input === ''
-            ? sortedCountries
-            : sortedCountries.filter((country) => {
+            ? [...countries].sort((a, b) =>
+                  a.name.common.localeCompare(b.name.common)
+              )
+            : countries.filter((country) => {
                   return (
                       country.name.common
                           .toLowerCase()
                           .includes(input.toLowerCase()) === true
                   );
               });
+    console.log('countriesToshow: ', countriesToshow.length);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -101,17 +102,24 @@ const Home = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {countriesToshow
-                        .slice(
-                            page * rowsPerPage,
-                            page * rowsPerPage + rowsPerPage
-                        )
-                        .map((country) => (
-                            <CountryRow
-                                country={country}
-                                key={country.name.common}
-                            />
-                        ))}
+                    {countriesToshow.length > rowsPerPage
+                        ? countriesToshow
+                              .slice(
+                                  page * rowsPerPage,
+                                  page * rowsPerPage + rowsPerPage
+                              )
+                              .map((country) => (
+                                  <CountryRow
+                                      country={country}
+                                      key={country.name.common}
+                                  />
+                              ))
+                        : countriesToshow.map((country) => (
+                              <CountryRow
+                                  country={country}
+                                  key={country.name.common}
+                              />
+                          ))}
                 </tbody>
             </table>
             <div className="wrapper">
